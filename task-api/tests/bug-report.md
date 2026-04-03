@@ -13,3 +13,7 @@
 - Actual behavior: `completeTask` rewrites `priority` to `medium` every time.
 - How it was discovered: reading the service while writing completion tests showed the function mutates priority even when the caller did not request it.
 - What a fix looks like: preserve the existing task fields and only update `status` and `completedAt`.
+
+  Bug fix: the pagination off-by-one issue in task-api/src/services/taskService.js was fixed, and the regression is covered in task-api/tests/taskService.test.js and task-api/tests/tasks.test.js.
+
+  New feature: PATCH /tasks/:id/assign was added in task-api/src/routes/tasks.js with validation in task-api/src/utils/validators.js, and it is covered by task-api/tests/tasks.test.js and task-api/tests/validators.test.js.
